@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello
+  name: hello-v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        image: amitvashist7/http-echo
+        env: 
+        - name: TEXT 
+          value: hello, this is v2
+        - name: NEXT
+          value: "world:8080"
+        ports:
+        - name: http
+          containerPort: 8080
