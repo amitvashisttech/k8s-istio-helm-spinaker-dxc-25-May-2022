@@ -1,0 +1,160 @@
+1925  wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
+ 1926  tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
+ 1927  sudo mv linux-amd64/helm /usr/local/bin/helm
+ 1928  mv linux-amd64/helm /usr/local/bin/helm
+ 1929  cp -rf linux-amd64/helm /usr/local/bin/helm 
+ 1930  helm --version 
+ 1931  helm -version 
+ 1932  helm -v
+ 1933  helm --help
+ 1934  ls
+ 1935  cd linux-amd64/
+ 1936  ls
+ 1937  cd 
+ 1938  ls
+ 1939  cd k8s-istio-helm-spinaker-dxc-25-May-2022/
+ 1940  ls
+ 1941  mkdir 11-Helm
+ 1942  ls
+ 1943  cd 11-Helm/
+ 1944  ls
+ 1945  vim helm-rbac.yaml
+ 1946  ls
+ 1947  kubectl create -f helm-rbac.yaml 
+ 1948  kubectl get clusterrolebindings 
+ 1949  kubectl get clusterrolebindings cluster-admin -o yaml 
+ 1950  vim helm-rbac.yaml 
+ 1951  kubectl create -f helm-rbac.yaml 
+ 1952  kubectl apply  -f helm-rbac.yaml 
+ 1953  kubectl delete   -f helm-rbac.yaml 
+ 1954  kubectl apply   -f helm-rbac.yaml 
+ 1955  ls
+ 1956  cd ..
+ 1957  cd 
+ 1958  ls
+ 1959  cd linux-amd64/
+ 1960  ls
+ 1961  ./helm --help
+ 1962  ./helm version 
+ 1963  cd 
+ 1964  helm version 
+ 1965  ls
+ 1966  cd linux-amd64/
+ 1967  ls
+ 1968  ./helm repo add azure-marketplace https://marketplace.azurecr.io/helm/v1/repo/
+ 1969  ./helm repo list 
+ 1970  ./helm search repo nginx 
+ 1971  ./helm install my-nginx-test azure-marketplace/nginx
+ 1972  kubectl  exec -it busybox -c busybox -- curl -vv my-nginx-test.default.svc.cluster.local
+ 1973  kubectl  exec -it busybox -c busybox -- wget  my-nginx-test.default.svc.cluster.local
+ 1974  kubectl  exec -it busybox -c busybox -- cat index.html
+ 1975  export SERVICE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].port}" services my-nginx-test)
+ 1976  echo "http://${SERVICE_IP}:${SERVICE_PORT}"
+ 1977  ls
+ 1978  cd ..
+ 1979  ls
+ 1980  cd k8s-istio-helm-spinaker-dxc-25-May-2022/
+ 1981  ls
+ 1982  cd 11-Helm/
+ 1983  ls
+ 1984  vim README.md
+ 1985  ls
+ 1986  cd ..
+ 1987  ls
+ 1988  git add . ; git commit -m "11-Helm" ; git push 
+ 1989  kubectl  get svc 
+ 1990  ls
+ 1991  cd k8s-istio-helm-spinaker-dxc-25-May-2022/
+ 1992  ls
+ 1993  mkdir 12-Helm-Custom-Charts
+ 1994  cd 12-Helm-Custom-Charts/
+ 1995  ls
+ 1996  helm create mychart
+ 1997  ls
+ 1998  cd mychart/
+ 1999  ls
+ 2000  ls -R . 
+ 2001  ls
+ 2002  vim Chart.yaml 
+ 2003  ls
+ 2004  vim values.yaml 
+ 2005  ls
+ 2006  cd ..
+ 2007  helm list 
+ 2008  helm delete my-nginx-test
+ 2009  kubectl  get deploy,svc 
+ 2010  helm list 
+ 2011  kubectl get deploy 
+ 2012  kubectl get ns 
+ 2013  kubectl get svc 
+ 2014  ls
+ 2015  helm install my-nginx mychart --dry-run 
+ 2016  helm install my-nginx mychart
+ 2017  helm list 
+ 2018  kubectl get deploy,svc,pod
+ 2019  ls
+ 2020  helm create mywebapp 
+ 2021  cd mywebapp/
+ 2022  ls
+ 2023  vim values.yaml 
+ 2024  ls
+ 2025  cd ..
+ 2026  ls
+ 2027  helm install mywebapp mywebapp --dry-run 
+ 2028  helm install mywebapp mywebapp 
+ 2029  kubectl  get deploy,pods 
+ 2030  kubectl describe pod mywebapp-558cc7ccc-fgpbv
+ 2031  ls
+ 2032  helm create mypywebapp
+ 2033  ls
+ 2034  cd mypywebapp/
+ 2035  ls
+ 2036  vim values.yaml 
+ 2037  ls
+ 2038  vim templates/deployment.yaml 
+ 2039  ls
+ 2040  vim values.yaml 
+ 2041  ls
+ 2042  cd ..
+ 2043  ls
+ 2044  helm install mypywebapp mypywebapp --dry-run 
+ 2045  helm install my-pyapp-v1 mypywebapp --dry-run 
+ 2046  helm install my-pyapp-v1 mypywebapp 
+ 2047  vim mypywebapp/values.yaml 
+ 2048  helm install my-pyapp-v1 mypywebapp 
+ 2049  helm  list 
+ 2050  helm delete my-pyapp-v1
+ 2051  helm install my-pyapp-v1 mypywebapp 
+ 2052  helm list 
+ 2053  kubectl  get pods 
+ 2054  kubectl  get svc 
+ 2055  kubectl  get pods -o wide 
+ 2056  for i in $(seq 1 100); do curl -s http://20.237.104.204/info ; done 
+ 2057  ls
+ 2058  cd ..
+ 2059  ls
+ 2060  cd 12-Helm-Custom-Charts/
+ 2061  ls
+ 2062  helm list 
+ 2063  helm help
+ 2064  ls
+ 2065  vim mywebapp/templates/deployment.yaml 
+ 2066  ls
+ 2067  vim mywebapp/Chart.yaml 
+ 2068  ls
+ 2069  helm upgrade 
+ 2070  helm list 
+ 2071  helm upgrade mywebapp mywebapp
+ 2072  helm list 
+ 2073  kubectl  get pods 
+ 2074  kubectl get svc 
+ 2075  ls
+ 2076  helm list 
+ 2077  helm help
+ 2078  helm rollback mywebapp mywebapp
+ 2079  helm rollback mywebapp 
+ 2080  helm list 
+ 2081  kubectl  get pods 
+ 2082  helm rollback mywebapp 
+ 2083  helm list 
+ 2084  kubectl  get pods 
