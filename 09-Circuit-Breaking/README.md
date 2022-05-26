@@ -20,7 +20,7 @@ kubectl get destinationrule httpbin -o yaml
 
 ## Add a simple load-testing client called fortio. 
 ```
-kubectl apply -f <(istioctl kube-inject -f fortio-deploy.yaml)
+kubectl apply  -f fortio-deploy.yaml
 
 ```
 
