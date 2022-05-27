@@ -44,8 +44,23 @@ hal config deploy edit --type distributed --account-name my-k8s
 ```
 
 ### Below command needs to be run on your local machine where you have helm binary
-#### Install acs in kubernetes cluster
+#### Install Azure Storage ( AZS ) in kubernetes cluster
 ```
+sh storage-backend-provision.sh
+```
+```
+storage_account_name: <account_name>
+container_name: <container_name>
+access_key: <access_key>
+
+```
+
+#### Editing your storage settings
+```
+hal config storage azs edit --storage-account-name $STORAGE_ACCOUNT_NAME --storage-account-key $STORAGE_ACCOUNT_KEY
+```
+```
+hal config storage edit --type azs
 ```
 
 #### Choose spinnaker version to install
