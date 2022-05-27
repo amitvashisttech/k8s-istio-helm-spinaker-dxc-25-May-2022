@@ -50,7 +50,7 @@ hal config features edit --artifacts true
 hal config deploy edit --type distributed --account-name my-k8s
 ```
 
-### Below command needs to be run on your local machine where you have helm binary
+### Below command needs to be run on your local machine or cloud-shell form where you can provision storage: 
 #### Install Azure Storage ( AZS ) in kubernetes cluster
 ```
 sh storage-backend-provision.sh
