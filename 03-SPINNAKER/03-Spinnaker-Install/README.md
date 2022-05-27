@@ -8,7 +8,7 @@
 #### Start Halyard Container
 
 ```
-mkdir ~/.hal
+mkdir ~/.hal ; chmod -R 777 ~/.hal
 docker run --name halyard -v ~/.hal:/home/spinnaker/.hal -v ~/.kube/config:/home/spinnaker/.kube/config -d gcr.io/spinnaker-marketplace/halyard:stable
 ```
 
