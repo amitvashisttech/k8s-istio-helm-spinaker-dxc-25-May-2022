@@ -4,6 +4,12 @@
 - Kubernetes cluster with atleast **6 cores** and **20GB memory**
 - One VM with docker & kubectl utils installed 
 
+#### Copy the KubeConfig in VM 
+```
+mkdir .kube
+copy the kubeconfig or credentions inside .kube/config
+kubectl get nodes 
+```
 
 #### Start Halyard Container
 
