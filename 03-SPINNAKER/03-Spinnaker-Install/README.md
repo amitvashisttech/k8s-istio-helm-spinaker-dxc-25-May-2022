@@ -1,7 +1,8 @@
 # Deploying Spinnaker in a Kubernetes cluster
 
 ### Pre-requisites
-Kubernetes cluster with atleast **6 cores** and **20GB memory**
+- Kubernetes cluster with atleast **6 cores** and **20GB memory**
+- One VM with docker & kubectl utils installed 
 
 
 #### Start Halyard Container
